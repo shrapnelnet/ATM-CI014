@@ -131,6 +131,12 @@ public class Controls {
     }
 
     private void withdraw(int transactionSum) {
+        int balance = db.balance(account.username);
+        if (balance < transactionSum) {
+            this.display_primary.setText("");
+            this.display_secondary.setText("You can't make a withdrawal of £" + transactionSum + " as your balance is only £" + balance + ".");
+            return;
+        }
         boolean success = db.withdraw(account.username, transactionSum);
         if (success) {
             this.display_secondary.setText("£" + transactionSum + " withdrawal for account: " + account.username + " succeeded!");
