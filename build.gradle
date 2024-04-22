@@ -46,7 +46,5 @@ jar {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
     exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
+    archiveBaseName = "atm-v1.1.0"
 }
-
-
-mainClassName = "com.shr4pnel.atm.Main"

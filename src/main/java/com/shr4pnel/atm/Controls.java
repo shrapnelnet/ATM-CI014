@@ -139,14 +139,20 @@ public class Controls {
         this.display_secondary.setText("Withdrawal failed! check logs, and please still give me a first for the assignment!");
     }
 
+    private void balance() {
+        display_primary.setText("");
+        int balance = db.balance(account.username);
+        display_secondary.setText("Your balance is: £" + balance);
+    }
+
     @FXML
     private void enter() {
         String transactionSumString = this.display_primary.getText();
-        if (transactionSumString.isEmpty()) {
-            return;
+        int transactionSum = 0;
+        if (!transactionSumString.isEmpty()) {
+            transactionSum = Integer.parseInt(transactionSumString);
         }
-        int transactionSum = Integer.parseInt(transactionSumString);
-        if (!enterInConfirmState) {
+        if (!enterInConfirmState && !getTransactionType().equals("Balance")) {
             enterInConfirmState = true;
             this.display_secondary.setText("Would you like to " + getTransactionType().toLowerCase() + " £" + transactionSum + "? Press enter again to confirm.");
             return;
@@ -159,9 +165,9 @@ public class Controls {
             case "Withdraw":
                 withdraw(transactionSum);
                 break;
-        }
-        if (getTransactionType().equals("Deposit")) {
-
+            case "Balance":
+                balance();
+                break;
         }
     }
 

@@ -101,4 +101,19 @@ public class Database {
 
     }
 
+    protected int balance(String username) {
+        try (
+                Connection connection = DriverManager.getConnection("jdbc:sqlite:accounts.db");
+                PreparedStatement statement = connection.prepareStatement("select balance from accounts where username=?")
+        ) {
+            statement.setString(1, username);
+            ResultSet rs = statement.executeQuery();
+            return rs.getInt("balance");
+        } catch (SQLException err) {
+            Log.warn(err.getMessage());
+            Log.warn("Database::balance: Failed to get account balance");
+            return -1;
+        }
+    }
+
 }
