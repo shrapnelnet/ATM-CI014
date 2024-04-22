@@ -5,30 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42d88114-01a5-4827-a651-978e577714c4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/shr4pnel/atm/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/shr4pnel/atm/Controls.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/shr4pnel/atm/Database.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/shr4pnel/atm/Log.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/shr4pnel/atm/LoginControls.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/shr4pnel/atm/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/shr4pnel/atm/RegisterControls.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/shr4pnel/atm/Root.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/shr4pnel/atm/interface.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shr4pnel/atm/Root.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shr4pnel/atm/Root.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +41,19 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="ATM-Reimplementation" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ATM-Reimplementation" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ATM-Reimplementation" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="distribution" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -116,6 +107,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;shrapnelnet&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/shrapnelnet/ATM-CI014.git&quot;,
+    &quot;accountId&quot;: &quot;93c1efc0-a655-4708-b181-f9d7733c6a7e&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -129,8 +132,9 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "Application.Main.executor": "Coverage",
+    "Application.Main.executor": "Debug",
     "Gradle.ATM-Reimplementation [:Main.main()].executor": "Run",
+    "Gradle.ATM-Reimplementation [assembleDist].executor": "Run",
     "Gradle.ATM-Reimplementation [assemble].executor": "Run",
     "Gradle.ATM-Reimplementation [buildDependents].executor": "Run",
     "Gradle.ATM-Reimplementation [buildNeeded].executor": "Run",
@@ -139,9 +143,11 @@
     "Gradle.ATM-Reimplementation [dependencies].executor": "Run",
     "Gradle.ATM-Reimplementation [jar].executor": "Run",
     "Gradle.ATM-Reimplementation [javadoc].executor": "Run",
+    "Gradle.ATM-Reimplementation [run].executor": "Run",
     "Gradle.ATM-Reimplementation [test].executor": "Run",
     "Gradle.Build ATM-Reimplementation.executor": "Run",
     "Gradle.Download Sources.executor": "Run",
+    "JAR Application.ATM-Reimplementation-1.0-SNAPSHOT.jar.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Shell Script.ATM-Reimplementation.executor": "Run",
@@ -175,22 +181,8 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.shr4pnel.atm.Main" />
-      <module name="ATM-Reimplementation.main" />
-      <option name="VM_PARAMETERS" value="-Dlog4j2.configurationFile=file://$PROJECT_DIR$/src/main/resources/log4j2.xml" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.shr4pnel.atm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ATM-Reimplementation [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="JAR Application.ATM-Reimplementation-1.0-SNAPSHOT.jar">
+    <configuration name="ATM-Reimplementation [assembleDist]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -201,29 +193,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="buildDependents" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="ATM-Reimplementation [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
+            <option value="assembleDist" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -256,35 +226,68 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="ATM-Reimplementation" type="ShConfigurationType" temporary="true">
-      <option name="SCRIPT_TEXT" value="" />
-      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
-      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/build/scripts/ATM-Reimplementation" />
-      <option name="SCRIPT_OPTIONS" value="" />
-      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
-      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/build/scripts" />
-      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
-      <option name="INTERPRETER_PATH" value="/bin/sh" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="EXECUTE_IN_TERMINAL" value="true" />
-      <option name="EXECUTE_SCRIPT_FILE" value="true" />
-      <envs />
+    <configuration name="ATM-Reimplementation [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ATM-Reimplementation [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ATM-Reimplementation-1.0-SNAPSHOT.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/build/libs/ATM-Reimplementation-1.0-SNAPSHOT.jar" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Gradle.ATM-Reimplementation [buildDependents]" />
+      <item itemvalue="Gradle.ATM-Reimplementation [assembleDist]" />
+      <item itemvalue="Gradle.ATM-Reimplementation [jar]" />
+      <item itemvalue="Gradle.ATM-Reimplementation [run]" />
       <item itemvalue="Gradle.ATM-Reimplementation [clean]" />
-      <item itemvalue="Gradle.ATM-Reimplementation [build]" />
-      <item itemvalue="Shell Script.ATM-Reimplementation" />
+      <item itemvalue="JAR Application.ATM-Reimplementation-1.0-SNAPSHOT.jar" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.ATM-Reimplementation [buildDependents]" />
+        <item itemvalue="JAR Application.ATM-Reimplementation-1.0-SNAPSHOT.jar" />
+        <item itemvalue="Gradle.ATM-Reimplementation [jar]" />
         <item itemvalue="Gradle.ATM-Reimplementation [clean]" />
-        <item itemvalue="Gradle.ATM-Reimplementation [build]" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Shell Script.ATM-Reimplementation" />
+        <item itemvalue="Gradle.ATM-Reimplementation [run]" />
+        <item itemvalue="Gradle.ATM-Reimplementation [assembleDist]" />
       </list>
     </recent_temporary>
   </component>
@@ -314,7 +317,8 @@
       <workItem from="1713291305964" duration="648000" />
       <workItem from="1713619013271" duration="19058000" />
       <workItem from="1713711258157" duration="5391000" />
-      <workItem from="1713792383630" duration="220000" />
+      <workItem from="1713792383630" duration="363000" />
+      <workItem from="1713796493564" duration="5268000" />
     </task>
     <servers />
   </component>

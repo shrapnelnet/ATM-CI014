@@ -9,15 +9,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class Root extends Application {
-
-
     @Override
-    public void start(Stage stage) throws MalformedURLException {
+    public void start(Stage stage) throws FileNotFoundException {
         Log.trace("Root::start: Initializing");
         // https://github.com/palexdev/MaterialFX?tab=readme-ov-file#theming-system
         // this builder is in charge of merging the default "modena" stylesheet
@@ -35,15 +32,15 @@ public class Root extends Application {
         stage.setTitle("Shr4pnelATM");
         stage.setResizable(false);
         // todo standardize location
-        loader.setLocation(new URL("file:///home/tyler/IdeaProjects/ATM-Reimplementation/src/main/resources/com/shr4pnel/atm/interface.fxml"));
+        loader.setLocation(getClass().getResource("/com/shr4pnel/atm/interface.fxml"));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         } catch (IOException err) {
-            err.printStackTrace();
             Log.error("interface.fxml not found");
+            throw new FileNotFoundException();
         }
     }
 }
