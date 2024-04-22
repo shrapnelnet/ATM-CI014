@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+group = 'com.shr4pnel.atm'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://nexus.gluonhq.com/nexus/content/repositories/releases/"
+    }
+}
+
+javafx {
+    version = "22"
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'org.apache.logging.log4j:log4j-api:2.23.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.23.1'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.23.1'
+    implementation 'io.github.palexdev:materialfx:11.17.0'
+    implementation 'org.apache.commons:commons-lang3:3.14.0'
+    implementation 'org.xerial:sqlite-jdbc:3.45.3.0'
+    implementation 'at.favre.lib:bcrypt:0.10.2'
+}
+
+test {
+    useJUnitPlatform()
+}
