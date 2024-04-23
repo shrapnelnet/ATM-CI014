@@ -1,5 +1,5 @@
 /**
- * This module is about impact of the final keyword on performance.
+ * My atm. enjoy it or else!
  *
  * @author shr4pnel
  * @version 1.2
