@@ -2,6 +2,8 @@ package com.shr4pnel.atm;
 
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.io.IOException;
+import java.util.HashMap;
 import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.event.ActionEvent;
@@ -14,9 +16,6 @@ import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.util.HashMap;
 
 public class Controls {
     boolean enterInConfirmState = false;
@@ -41,11 +40,13 @@ public class Controls {
     MenuItem login;
 
     public Controls() {
-        String[] idStrings = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "zero"};
+        String[] idStrings =
+            {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "zero"};
         String[] idDigits = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
         int i;
-        for (i = 0; i < 10; ++i)
+        for (i = 0; i < 10; ++i) {
             idMap.put(idStrings[i], idDigits[i]);
+        }
     }
 
     @FXML
@@ -124,25 +125,32 @@ public class Controls {
     private void deposit(int transactionSum) {
         boolean success = db.deposit(account.username, transactionSum);
         if (success) {
-            this.display_secondary.setText("£" + transactionSum + " deposit for account: " + account.username + " succeeded!");
+            this.display_secondary.setText(
+                "£" + transactionSum + " deposit for account: " + account.username + " succeeded!");
             return;
         }
-        this.display_secondary.setText("Deposit failed! check logs, and please still give me a first for the assignment!");
+        this.display_secondary.setText(
+            "Deposit failed! check logs, and please still give me a first for the assignment!");
     }
 
     private void withdraw(int transactionSum) {
         int balance = db.balance(account.username);
         if (balance < transactionSum) {
             this.display_primary.setText("");
-            this.display_secondary.setText("You can't make a withdrawal of £" + transactionSum + " as your balance is only £" + balance + ".");
+            this.display_secondary.setText(
+                "You can't make a withdrawal of £" + transactionSum + " as your balance is only £" +
+                    balance + ".");
             return;
         }
         boolean success = db.withdraw(account.username, transactionSum);
         if (success) {
-            this.display_secondary.setText("£" + transactionSum + " withdrawal for account: " + account.username + " succeeded!");
+            this.display_secondary.setText(
+                "£" + transactionSum + " withdrawal for account: " + account.username +
+                    " succeeded!");
             return;
         }
-        this.display_secondary.setText("Withdrawal failed! check logs, and please still give me a first for the assignment!");
+        this.display_secondary.setText(
+            "Withdrawal failed! check logs, and please still give me a first for the assignment!");
     }
 
     private void balance() {
@@ -160,7 +168,9 @@ public class Controls {
         }
         if (!enterInConfirmState && !getTransactionType().equals("Balance")) {
             enterInConfirmState = true;
-            this.display_secondary.setText("Would you like to " + getTransactionType().toLowerCase() + " £" + transactionSum + "? Press enter again to confirm.");
+            this.display_secondary.setText(
+                "Would you like to " + getTransactionType().toLowerCase() + " £" + transactionSum +
+                    "? Press enter again to confirm.");
             return;
         }
         enterInConfirmState = false;
@@ -181,11 +191,14 @@ public class Controls {
     private void backspace() {
         if (enterInConfirmState) {
             enterInConfirmState = false;
-            this.display_secondary.setText("Transaction cancelled! enter new sum or change transaction.");
+            this.display_secondary.setText(
+                "Transaction cancelled! enter new sum or change transaction.");
+            return;
         }
         String displayContent = display_primary.getText();
-        if (displayContent.isEmpty())
+        if (displayContent.isEmpty()) {
             return;
+        }
         String newDisplayContent = displayContent.substring(0, displayContent.length() - 1);
         display_primary.setText(newDisplayContent);
     }
@@ -211,7 +224,8 @@ public class Controls {
         }
         if (enterInConfirmState) {
             enterInConfirmState = false;
-            this.display_secondary.setText("Transaction cancelled! enter new sum or change transaction.");
+            this.display_secondary.setText(
+                "Transaction cancelled! enter new sum or change transaction.");
         }
         String numberToAppend = idMap.get(id);
         this.display_primary.appendText(numberToAppend);

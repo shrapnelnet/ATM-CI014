@@ -3,14 +3,13 @@ package com.shr4pnel.atm;
 import io.github.palexdev.materialfx.theming.JavaFXThemes;
 import io.github.palexdev.materialfx.theming.MaterialFXStylesheets;
 import io.github.palexdev.materialfx.theming.UserAgentBuilder;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class Root extends Application {
     @Override
@@ -21,12 +20,12 @@ public class Root extends Application {
         // with the materialfx root stylesheet
         // it looks awful without this!
         UserAgentBuilder.builder()
-                .themes(JavaFXThemes.MODENA)
-                .themes(MaterialFXStylesheets.forAssemble(false))
-                .setDeploy(true)
-                .setResolveAssets(true)
-                .build()
-                .setGlobal();
+            .themes(JavaFXThemes.MODENA)
+            .themes(MaterialFXStylesheets.forAssemble(false))
+            .setDeploy(true)
+            .setResolveAssets(true)
+            .build()
+            .setGlobal();
 
         FXMLLoader loader = new FXMLLoader();
         stage.setTitle("Shr4pnelATM");

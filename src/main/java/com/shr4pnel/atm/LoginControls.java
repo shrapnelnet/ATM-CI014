@@ -9,7 +9,12 @@ import javafx.stage.Stage;
 public class LoginControls {
     Account account;
     Database db = new Database();
-
+    @FXML
+    MFXTextField loginUsername;
+    @FXML
+    MFXPasswordField loginPassword;
+    @FXML
+    Text loginFeedback;
     private Controls rootController;
 
     @FXML
@@ -19,20 +24,12 @@ public class LoginControls {
     }
 
     @FXML
-    MFXTextField loginUsername;
-
-    @FXML
-    MFXPasswordField loginPassword;
-
-    @FXML
-    Text loginFeedback;
-
-    @FXML
     private void doLogin() {
         final String username = loginUsername.getText();
         final String password = loginPassword.getText();
-        if (username.isEmpty() || password.isEmpty())
+        if (username.isEmpty() || password.isEmpty()) {
             return;
+        }
         account = db.tryLogin(username, password);
         if (account == null) {
             Log.warn("LoginControls::doLogin: No such account");

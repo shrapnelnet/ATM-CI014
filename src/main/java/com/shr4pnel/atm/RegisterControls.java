@@ -7,17 +7,14 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class RegisterControls {
-    private Controls rootController;
     Database db = new Database();
-
     @FXML
     MFXPasswordField registerPassword;
-
     @FXML
     MFXTextField registerUsername;
-
     @FXML
     Text registerFeedback;
+    private Controls rootController;
 
     @FXML
     void initialize() {
@@ -31,7 +28,8 @@ public class RegisterControls {
         String username = registerUsername.getText();
         boolean success = db.createAccount(username, password);
         if (success) {
-            this.rootController.display_secondary.setText("Registration for \"" + username + "\" successful! Please log-in.");
+            this.rootController.display_secondary.setText(
+                "Registration for \"" + username + "\" successful! Please log-in.");
             Stage stage = (Stage) registerUsername.getScene().getWindow();
             stage.close();
         }

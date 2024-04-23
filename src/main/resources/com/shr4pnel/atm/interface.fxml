@@ -32,23 +32,13 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioMenuItem?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shr4pnel.atm.Controls">
+<VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21"
+      fx:controller="com.shr4pnel.atm.Controls">
     <children>
         <MenuBar useSystemMenuBar="true" VBox.vgrow="NEVER">
             <menus>
@@ -56,64 +46,107 @@
                     <items>
                         <RadioMenuItem mnemonicParsing="false" selected="true" text="Deposit">
                             <toggleGroup>
-                                <ToggleGroup fx:id="transactions" />
+                                <ToggleGroup fx:id="transactions"/>
                             </toggleGroup>
                         </RadioMenuItem>
-                        <RadioMenuItem mnemonicParsing="false" text="Withdraw" toggleGroup="$transactions" />
-                  <RadioMenuItem mnemonicParsing="false" text="Balance" toggleGroup="$transactions" />
+                        <RadioMenuItem mnemonicParsing="false" text="Withdraw" toggleGroup="$transactions"/>
+                        <RadioMenuItem mnemonicParsing="false" text="Balance" toggleGroup="$transactions"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Account">
                     <items>
-                        <MenuItem fx:id="login" mnemonicParsing="false" onAction="#showLogin" text="Login" />
-                        <MenuItem mnemonicParsing="false" onAction="#showRegister" text="Register" />
-                  <MenuItem fx:id="logout" disable="true" mnemonicParsing="false" onAction="#doLogout" text="Logout" />
+                        <MenuItem fx:id="login" mnemonicParsing="false" onAction="#showLogin" text="Login"/>
+                        <MenuItem mnemonicParsing="false" onAction="#showRegister" text="Register"/>
+                        <MenuItem fx:id="logout" disable="true" mnemonicParsing="false" onAction="#doLogout"
+                                  text="Logout"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#about" text="About Shr4pnelATM" />
+                        <MenuItem mnemonicParsing="false" onAction="#about" text="About Shr4pnelATM"/>
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
             <children>
-                <GridPane layoutX="48.0" layoutY="38.0" prefHeight="298.0" prefWidth="256.0" AnchorPane.rightAnchor="336.0">
+                <GridPane layoutX="48.0" layoutY="38.0" prefHeight="298.0" prefWidth="256.0"
+                          AnchorPane.rightAnchor="336.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="134.0" minWidth="10.0" prefWidth="87.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="0.0" prefWidth="89.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="10.0" prefWidth="90.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="134.0" minWidth="10.0" prefWidth="87.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="0.0" prefWidth="89.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="10.0" prefWidth="90.0"/>
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
                     <children>
-                        <MFXButton fx:id="seven" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0" prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE" style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="7" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                        <MFXButton fx:id="two" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0" prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE" style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="2" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                        <MFXButton fx:id="three" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0" prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE" style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="3" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
-                        <MFXButton fx:id="six" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0" prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE" style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <MFXButton fx:id="five" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0" prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE" style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <MFXButton fx:id="four" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0" prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE" style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <MFXButton fx:id="one" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0" prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE" style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="1" GridPane.halignment="CENTER" />
-                        <MFXButton fx:id="eight" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0" prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE" style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="8" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <MFXButton fx:id="nine" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0" prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE" style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="9" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <MFXButton fx:id="zero" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0" prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE" style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                        <MFXButton fx:id="backspace" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0" prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE" style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="⌫" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                        <MFXButton fx:id="seven" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0"
+                                   prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE"
+                                   style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="7"
+                                   GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER"/>
+                        <MFXButton fx:id="two" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0"
+                                   prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE"
+                                   style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="2"
+                                   GridPane.columnIndex="1" GridPane.halignment="CENTER"/>
+                        <MFXButton fx:id="three" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0"
+                                   prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE"
+                                   style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="3"
+                                   GridPane.columnIndex="2" GridPane.halignment="CENTER"/>
+                        <MFXButton fx:id="six" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0"
+                                   prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE"
+                                   style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="6"
+                                   GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1"/>
+                        <MFXButton fx:id="five" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0"
+                                   prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE"
+                                   style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="5"
+                                   GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1"/>
+                        <MFXButton fx:id="four" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0"
+                                   prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE"
+                                   style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="4"
+                                   GridPane.halignment="CENTER" GridPane.rowIndex="1"/>
+                        <MFXButton fx:id="one" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0"
+                                   prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE"
+                                   style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="1"
+                                   GridPane.halignment="CENTER"/>
+                        <MFXButton fx:id="eight" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0"
+                                   prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE"
+                                   style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="8"
+                                   GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2"/>
+                        <MFXButton fx:id="nine" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0"
+                                   prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE"
+                                   style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="9"
+                                   GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2"/>
+                        <MFXButton fx:id="zero" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0"
+                                   prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE"
+                                   style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="0"
+                                   GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3"/>
+                        <MFXButton fx:id="backspace" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0"
+                                   prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE"
+                                   style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="⌫"
+                                   GridPane.halignment="CENTER" GridPane.rowIndex="3">
                             <font>
-                                <Font name="System Bold" size="13.0" />
+                                <Font name="System Bold" size="13.0"/>
                             </font>
                         </MFXButton>
-                        <MFXButton fx:id="enter" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0" prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE" style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="✓" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <MFXButton fx:id="enter" buttonType="RAISED" onAction="#handleButtonPress" prefHeight="60.0"
+                                   prefWidth="60.0" rippleBackgroundOpacity="0.0" rippleColor="WHITE"
+                                   style="-fx-background-color: goldenrod; -fx-background-radius: 15;" text="✓"
+                                   GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"/>
                     </children>
                 </GridPane>
-                <MFXTextField fx:id="display_primary" allowEdit="false" editable="false" floatingText="shr4pnelATM v0.0.1a" layoutX="352.0" layoutY="53.0" prefHeight="51.0" prefWidth="256.0" selectable="false" />
-                <TextArea fx:id="display_secondary" editable="false" layoutX="352.0" layoutY="136.0" prefHeight="200.0" prefWidth="256.0" text="Set transaction type in &quot;Transaction&quot; button on menu" wrapText="true" />
-            <Text fx:id="feedback" layoutX="352.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="256.0" />
-            <Text layoutX="341.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="£" />
+                <MFXTextField fx:id="display_primary" allowEdit="false" editable="false"
+                              floatingText="shr4pnelATM v1.2.0" layoutX="352.0" layoutY="53.0" prefHeight="51.0"
+                              prefWidth="256.0" selectable="false"/>
+                <TextArea fx:id="display_secondary" editable="false" layoutX="352.0" layoutY="136.0" prefHeight="200.0"
+                          prefWidth="256.0" text="Set transaction type in &quot;Transaction&quot; button on menu"
+                          wrapText="true"/>
+                <Text fx:id="feedback" layoutX="352.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                      wrappingWidth="256.0"/>
+                <Text layoutX="341.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="£"/>
             </children>
         </AnchorPane>
     </children>

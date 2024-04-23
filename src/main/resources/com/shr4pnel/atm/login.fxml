@@ -38,15 +38,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-
-<VBox prefHeight="281.0" prefWidth="348.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shr4pnel.atm.LoginControls">
+<VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="281.0" prefWidth="348.0" xmlns="http://javafx.com/javafx/21"
+      fx:controller="com.shr4pnel.atm.LoginControls">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="362.0" VBox.vgrow="ALWAYS">
             <children>
-                <MFXTextField fx:id="loginUsername" floatingText="Username" layoutX="52.0" layoutY="49.0" prefHeight="51.0" prefWidth="245.0" textLimit="255" />
-                <MFXButton buttonType="RAISED" layoutX="52.0" layoutY="186.0" onAction="#doLogin" prefHeight="44.0" prefWidth="245.0" rippleColor="WHITE" style="-fx-background-color: goldenrod;" text="Log in" />
-                <MFXPasswordField fx:id="loginPassword" floatingText="Password" layoutX="52.0" layoutY="115.0" prefHeight="51.0" prefWidth="245.0" />
-            <Text fx:id="loginFeedback" fill="RED" layoutX="96.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="157.7294921875" />
+                <MFXTextField fx:id="loginUsername" floatingText="Username" layoutX="52.0" layoutY="49.0"
+                              prefHeight="51.0" prefWidth="245.0" textLimit="255"/>
+                <MFXButton buttonType="RAISED" layoutX="52.0" layoutY="186.0" onAction="#doLogin" prefHeight="44.0"
+                           prefWidth="245.0" rippleColor="WHITE" style="-fx-background-color: goldenrod;"
+                           text="Log in"/>
+                <MFXPasswordField fx:id="loginPassword" floatingText="Password" layoutX="52.0" layoutY="115.0"
+                                  prefHeight="51.0" prefWidth="245.0"/>
+                <Text fx:id="loginFeedback" fill="RED" layoutX="96.0" layoutY="257.0" strokeType="OUTSIDE"
+                      strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="157.7294921875"/>
             </children>
         </AnchorPane>
     </children>
