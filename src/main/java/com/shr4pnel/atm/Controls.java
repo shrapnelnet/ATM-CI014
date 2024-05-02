@@ -40,8 +40,7 @@ public class Controls {
     MenuItem login;
 
     public Controls() {
-        String[] idStrings =
-            {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "zero"};
+        String[] idStrings = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "zero"};
         String[] idDigits = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
         int i;
         for (i = 0; i < 10; ++i) {
@@ -145,20 +144,15 @@ public class Controls {
         int balance = db.balance(account.username);
         if (balance < transactionSum) {
             display_primary.setText("");
-            display_secondary.setText(
-                "You can't make a withdrawal of £" + transactionSum + " as your balance is only £" +
-                    balance + ".");
+            display_secondary.setText("You can't make a withdrawal of £" + transactionSum + " as your balance is only £" + balance + ".");
             return;
         }
         boolean success = db.withdraw(account.username, transactionSum);
         if (success) {
-            display_secondary.setText(
-                "£" + transactionSum + " withdrawal for account: " + account.username +
-                    " succeeded!");
+            display_secondary.setText("£" + transactionSum + " withdrawal for account: " + account.username + " succeeded!");
             return;
         }
-        display_secondary.setText(
-            "Withdrawal failed! check logs, and please still give me a first for the assignment!");
+        display_secondary.setText("Withdrawal failed! check logs, and please still give me a first for the assignment!");
     }
 
     private void balance() {
@@ -192,9 +186,7 @@ public class Controls {
         }
         if (!enterInConfirmState && !getTransactionType().equals("Balance")) {
             enterInConfirmState = true;
-            display_secondary.setText(
-                "Would you like to " + getTransactionType().toLowerCase() + " £" + transactionSum +
-                    "? Press enter again to confirm.");
+            display_secondary.setText("Would you like to " + getTransactionType().toLowerCase() + " £" + transactionSum + "? Press enter again to confirm.");
             return;
         }
         enterInConfirmState = false;
