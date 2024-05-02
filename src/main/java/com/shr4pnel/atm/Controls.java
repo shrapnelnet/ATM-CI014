@@ -123,52 +123,76 @@ public class Controls {
     }
 
     private void deposit(int transactionSum) {
+        long initialBalance = db.balance(account.username);
+        long totalBalance = initialBalance + transactionSum;
+        if (totalBalance > Integer.MAX_VALUE) {
+            Log.warn("Controls::deposit: Deposit would cause integer overflow");
+            display_secondary.setText("Don't you think you have enough money already?");
+            display_primary.setText("");
+            return;
+        }
         boolean success = db.deposit(account.username, transactionSum);
         if (success) {
-            this.display_secondary.setText(
+            display_secondary.setText(
                 "£" + transactionSum + " deposit for account: " + account.username + " succeeded!");
             return;
         }
-        this.display_secondary.setText(
+        display_secondary.setText(
             "Deposit failed! check logs, and please still give me a first for the assignment!");
     }
 
     private void withdraw(int transactionSum) {
         int balance = db.balance(account.username);
         if (balance < transactionSum) {
-            this.display_primary.setText("");
-            this.display_secondary.setText(
+            display_primary.setText("");
+            display_secondary.setText(
                 "You can't make a withdrawal of £" + transactionSum + " as your balance is only £" +
                     balance + ".");
             return;
         }
         boolean success = db.withdraw(account.username, transactionSum);
         if (success) {
-            this.display_secondary.setText(
+            display_secondary.setText(
                 "£" + transactionSum + " withdrawal for account: " + account.username +
                     " succeeded!");
             return;
         }
-        this.display_secondary.setText(
+        display_secondary.setText(
             "Withdrawal failed! check logs, and please still give me a first for the assignment!");
     }
 
     private void balance() {
         display_primary.setText("");
-        int balance = db.balance(account.username);
+        int balance;
+        try {
+            balance = db.balance(account.username);
+        } catch (NullPointerException err) {
+            Log.warn("Controls::balance: Attempt to read username while no user is logged in");
+            return;
+        }
         display_secondary.setText("Your balance is: £" + balance);
     }
 
     @FXML
     private void enter() {
-        String transactionSumString = this.display_primary.getText();
+        String transactionSumString = display_primary.getText();
         int transactionSum = 0;
         if (!transactionSumString.isEmpty()) {
-            transactionSum = Integer.parseInt(transactionSumString);
+            try {
+                transactionSum = Integer.parseInt(transactionSumString);
+            } catch (NumberFormatException err) {
+                Log.warn("Controls::enter: Number exceeds 4 bytes, would throw NumberFormatException");
+                display_secondary.setText("That's way too much money!");
+                display_primary.setText("");
+                return;
+            }
+        }
+        if (transactionSum == 0 && !getTransactionType().equals("Balance")) {
+            return;
         }
         if (!enterInConfirmState && !getTransactionType().equals("Balance")) {
             enterInConfirmState = true;
-            this.display_secondary.setText(
+            display_secondary.setText(
                 "Would you like to " + getTransactionType().toLowerCase() + " £" + transactionSum +
                     "? Press enter again to confirm.");
             return;
@@ -191,7 +215,7 @@ public class Controls {
     private void backspace() {
         if (enterInConfirmState) {
             enterInConfirmState = false;
-            this.display_secondary.setText(
+            display_secondary.setText(
                 "Transaction cancelled! enter new sum or change transaction.");
             return;
         }
@@ -211,24 +235,24 @@ public class Controls {
         }
         Log.trace("Controls::doLogout: Logging out");
         account = null;
-        this.logout.setDisable(true);
-        this.login.setDisable(false);
-        this.display_primary.setText("");
-        this.display_secondary.setText("Logged out!");
+        logout.setDisable(true);
+        login.setDisable(false);
+        display_primary.setText("");
+        display_secondary.setText("Logged out!");
     }
 
     private void handleButtonNumberPress(String id) {
         if (account == null) {
-            this.display_secondary.setText("Log-in to make a transaction!");
+            display_secondary.setText("Log-in to make a transaction!");
             return;
         }
         if (enterInConfirmState) {
             enterInConfirmState = false;
-            this.display_secondary.setText(
+            display_secondary.setText(
                 "Transaction cancelled! enter new sum or change transaction.");
         }
         String numberToAppend = idMap.get(id);
-        this.display_primary.appendText(numberToAppend);
+        display_primary.appendText(numberToAppend);
     }
 
     public void handleButtonPress(ActionEvent event) {
