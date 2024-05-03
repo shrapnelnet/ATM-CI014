@@ -6,23 +6,33 @@ import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * Controller for the login.fxml file.
+ * @author <a href="https://github.com/shrapnelnet">Tyler</a>
+ * @version 1.4.0
+ * @since 1.0.0
+ */
 public class LoginControls {
+    /** Used to represent account state from database */
     Account account;
+    /** An instance of the database */
     Database db = new Database();
+    /** The text field containing the username */
     @FXML
     MFXTextField loginUsername;
+    /** The text field containing the password */
     @FXML
     MFXPasswordField loginPassword;
+    /** An initially invisible block of text, used to display feedback on unsuccessful logins */
     @FXML
     Text loginFeedback;
+    /** Used to perform operations on root controller while it is out of focus */
     private Controls rootController;
 
-    @FXML
-    void initialize() {
-        Log.trace("LoginControls:: initialize");
-        db.initialize();
-    }
-
+    /**
+     * Logs in, using the values in the text fields.
+     * Called within the login.fxml file
+     */
     @FXML
     private void doLogin() {
         final String username = loginUsername.getText();
@@ -50,6 +60,10 @@ public class LoginControls {
         stage.close();
     }
 
+    /**
+     * Used to create a handle between the current controller and the root controller
+     * @param rootController A Controls instance representing the root window's controller
+     */
     public void setPrimaryController(Controls rootController) {
         this.rootController = rootController;
     }

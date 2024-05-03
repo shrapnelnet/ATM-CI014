@@ -17,28 +17,48 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
+/**
+ * Controller for interface.fxml and about.fxml
+ * Handles all user keypresses, and passes them to Database when necessary
+ * @author <a href="https://github.com/shrapnelnet">Tyler</a>
+ * @version 1.4.0
+ * @since 1.0.0
+ */
 public class Controls {
+    /** Checks if enter has been previously pressed */
     boolean enterInConfirmState = false;
+    /** Holds the logged-in user's account */
     Account account;
-    // to map ids to integers
+    /** Used to map fx:id to string representations of actual integers, so they can be appended to the primary display */
     HashMap<String, String> idMap = new HashMap<>();
+    /** A handle to the current database */
     Database db = new Database();
 
+    /** The primary display, displays the number that will be used in the next transaction */
     @FXML
     MFXTextField display_primary;
 
+    /** The secondary display, shows informative information on the current operation */
     @FXML
     TextArea display_secondary;
 
+    /** Represents the radio menu group of all the available transactions */
     @FXML
     ToggleGroup transactions;
 
+    /** The button used to log-out */
     @FXML
     MenuItem logout;
 
+    /** The button used to log-in */
     @FXML
     MenuItem login;
 
+    /**
+     * Constructor for Controls
+     * Used to map button-presses to be used in a switch statement within handleButtonPress()
+     * @see Controls#handleButtonPress(ActionEvent)
+     */
     public Controls() {
         String[] idStrings = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "zero"};
         String[] idDigits = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
@@ -48,13 +68,20 @@ public class Controls {
         }
     }
 
+    /**
+     * Called automatically by JavaFX
+     * Used to initialize database
+     * @see Database#initialize()
+     */
     @FXML
     public void initialize() {
         db.initialize();
         Log.trace("Controls::initialize: Initializing");
     }
 
-    // responsible for opening browser window
+    /**
+     * Opens the browser to display the GNU GPLv3 license
+     */
     @FXML
     private void showLicense() {
         // applications have to be instantiated with this override even if you don't use it
@@ -69,6 +96,10 @@ public class Controls {
     }
 
 
+    /**
+     * Opens a new stage to display the login window
+     * @throws IOException If login.fxml is not found in resources folder
+     */
     @FXML
     private void showLogin() throws IOException {
         Log.trace("Controls::showLogin: Hit");
@@ -85,6 +116,10 @@ public class Controls {
         stage.show();
     }
 
+    /**
+     * Opens a new stage to display the registration window
+     * @throws IOException If register.fxml is not found in resources folder
+     */
     @FXML
     private void showRegister() throws IOException {
         Log.trace("Controls::showRegister: Hit");
@@ -100,12 +135,19 @@ public class Controls {
         stage.show();
     }
 
-
+    /**
+     * Gets the currently selected transaction within transaction menu
+     * @return String containing text value of selected RadioMenuItem transaction type
+     */
     private String getTransactionType() {
         RadioMenuItem selected = (RadioMenuItem) transactions.getSelectedToggle();
         return selected.getText();
     }
 
+    /**
+     * Opens a new stage to display the about window
+     * @throws IOException If about.fxml not found in resources folder
+     */
     @FXML
     private void about() throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -121,6 +163,10 @@ public class Controls {
         stage.show();
     }
 
+    /**
+     * Deposits money into users account
+     * @param transactionSum Amount of money to deposit
+     */
     private void deposit(int transactionSum) {
         long initialBalance = db.balance(account.username);
         long totalBalance = initialBalance + transactionSum;
@@ -140,6 +186,10 @@ public class Controls {
             "Deposit failed! check logs, and please still give me a first for the assignment!");
     }
 
+    /**
+     * Withdraws money from current users account
+     * @param transactionSum Amount of money to withdraw
+     */
     private void withdraw(int transactionSum) {
         int balance = db.balance(account.username);
         if (balance < transactionSum) {
@@ -155,6 +205,9 @@ public class Controls {
         display_secondary.setText("Withdrawal failed! check logs, and please still give me a first for the assignment!");
     }
 
+    /**
+     * Displays the current users balance in the secondary display box
+     */
     private void balance() {
         display_primary.setText("");
         int balance;
@@ -167,6 +220,9 @@ public class Controls {
         display_secondary.setText("Your balance is: £" + balance);
     }
 
+    /**
+     * Handles the user pressing enter on the keypad, and decides which transaction function to pass the transaction sum in the primary display to.
+     */
     @FXML
     private void enter() {
         String transactionSumString = display_primary.getText();
@@ -203,6 +259,9 @@ public class Controls {
         }
     }
 
+    /**
+     * Removes a character from the end of the primary display.
+     */
     @FXML
     private void backspace() {
         if (enterInConfirmState) {
@@ -219,6 +278,9 @@ public class Controls {
         display_primary.setText(newDisplayContent);
     }
 
+    /**
+     * Logs the currently logged-in user out.
+     */
     @FXML
     private void doLogout() {
         if (account == null) {
@@ -233,6 +295,10 @@ public class Controls {
         display_secondary.setText("Logged out!");
     }
 
+    /**
+     * Parses the number pressed, and appends it to the primary display
+     * @param id The fx:id of the button pressed
+     */
     private void handleButtonNumberPress(String id) {
         if (account == null) {
             display_secondary.setText("Log-in to make a transaction!");
@@ -247,6 +313,10 @@ public class Controls {
         display_primary.appendText(numberToAppend);
     }
 
+    /**
+     * Handles a numeric or function button being pressed on the keypad.
+     * @param event Passed in automatically on keypress. Represents the button pressed. Used to get the fx:id of the button pressed
+     */
     public void handleButtonPress(ActionEvent event) {
         MFXButton source = (MFXButton) event.getSource();
         String id = source.getId();

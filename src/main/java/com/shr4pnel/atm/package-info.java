@@ -1,9 +1,9 @@
 /**
- * My atm. enjoy it or else!
+ * A JavaFX ATM implementation using FXML with MaterialFX
  *
- * @author shr4pnel
- * @version 1.2
- * @since 1.0
+ * @author <a href="https://github.com/shrapnelnet">Tyler</a>
+ * @version 1.4.0
+ * @since 1.0.0
  */
 
 package com.shr4pnel.atm;

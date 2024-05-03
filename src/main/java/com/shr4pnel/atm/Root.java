@@ -11,7 +11,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Bundles stylesheet, and loads FXML into stages to be rendered into a stage
+ * @author <a href="https://github.com/shrapnelnet">Tyler</a>
+ * @version 1.4.0
+ * @since 1.0.0
+ */
 public class Root extends Application {
+    /**
+     * Takes stage injected by JavaFX and renders it.
+     * MaterialFX bundles all necessary stylesheets
+     *
+     * @param stage Passed in automatically by JavaFX. used to render FXML
+     * @throws FileNotFoundException If FXML is not present in resources folder
+     */
     @Override
     public void start(Stage stage) throws FileNotFoundException {
         Log.trace("Root::start: Initializing");
@@ -30,7 +43,6 @@ public class Root extends Application {
         FXMLLoader loader = new FXMLLoader();
         stage.setTitle("Shr4pnelATM");
         stage.setResizable(false);
-        // todo standardize location
         loader.setLocation(getClass().getResource("/com/shr4pnel/atm/interface.fxml"));
         try {
             Parent root = loader.load();
