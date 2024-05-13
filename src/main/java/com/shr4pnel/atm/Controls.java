@@ -1,6 +1,7 @@
 package com.shr4pnel.atm;
 
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.util.HashMap;
@@ -16,6 +17,8 @@ import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Controller for interface.fxml and about.fxml
@@ -25,6 +28,8 @@ import javafx.stage.Stage;
  * @since 1.0.0
  */
 public class Controls {
+    /** Logger instance for Controls */
+    private final Logger controlsLogger = LogManager.getLogger();
     /** Checks if enter has been previously pressed */
     boolean enterInConfirmState = false;
     /** Holds the logged-in user's account */
@@ -54,6 +59,10 @@ public class Controls {
     @FXML
     MenuItem login;
 
+    /** The button used to change password */
+    @FXML
+    MenuItem changePassword;
+
     /**
      * Constructor for Controls
      * Used to map button-presses to be used in a switch statement within handleButtonPress()
@@ -76,7 +85,7 @@ public class Controls {
     @FXML
     public void initialize() {
         db.initialize();
-        Log.trace("Controls::initialize: Initializing");
+        controlsLogger.trace("initialize: Initializing");
     }
 
     /**
@@ -102,7 +111,7 @@ public class Controls {
      */
     @FXML
     private void showLogin() throws IOException {
-        Log.trace("Controls::showLogin: Hit");
+        controlsLogger.trace("showLogin: Hit");
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/com/shr4pnel/atm/login.fxml"));
         Parent login = loader.load();
@@ -122,7 +131,7 @@ public class Controls {
      */
     @FXML
     private void showRegister() throws IOException {
-        Log.trace("Controls::showRegister: Hit");
+        controlsLogger.trace("showRegister: Hit");
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/com/shr4pnel/atm/register.fxml"));
         Parent login = loader.load();
@@ -159,7 +168,7 @@ public class Controls {
         stage.setScene(scene);
         stage.setX(600);
         stage.setY(400);
-        Log.trace("Controls::about: Showing about window");
+        controlsLogger.trace("about: Showing about window");
         stage.show();
     }
 
@@ -171,7 +180,7 @@ public class Controls {
         long initialBalance = db.balance(account.username);
         long totalBalance = initialBalance + transactionSum;
         if (totalBalance > Integer.MAX_VALUE) {
-            Log.warn("Controls::deposit: Deposit would cause integer overflow");
+            controlsLogger.warn("deposit: Deposit would cause integer overflow");
             display_secondary.setText("Don't you think you have enough money already?");
             display_primary.setText("");
             return;
@@ -214,7 +223,7 @@ public class Controls {
         try {
             balance = db.balance(account.username);
         } catch (NullPointerException err) {
-            Log.warn("Controls::balance: Attempt to read username while no user is logged in");
+            controlsLogger.warn("balance: Attempt to read username while no user is logged in");
             return;
         }
         display_secondary.setText("Your balance is: £" + balance);
@@ -231,7 +240,7 @@ public class Controls {
             try {
                 transactionSum = Integer.parseInt(transactionSumString);
             } catch (NumberFormatException err) {
-                Log.warn("Controls::enter: Number exceeds 4 bytes, would throw NumberFormatException");
+                controlsLogger.warn("enter: Number exceeds 4 bytes, would throw NumberFormatException");
                 display_secondary.setText("That's way too much money!");
                 display_primary.setText("");
                 return;
@@ -284,16 +293,37 @@ public class Controls {
     @FXML
     private void doLogout() {
         if (account == null) {
-            Log.warn("Controls::doLogout: attempt to log-out without being logged in");
+            controlsLogger.warn("doLogout: attempt to log-out without being logged in");
             return;
         }
-        Log.trace("Controls::doLogout: Logging out");
+        controlsLogger.trace("doLogout: Logging out");
         account = null;
         logout.setDisable(true);
         login.setDisable(false);
+        changePassword.setDisable(true);
         display_primary.setText("");
         display_secondary.setText("Logged out!");
     }
+
+    /**
+     * Opens the changewindow.fxml scene in a new window
+     * @throws IOException if changewindow.fxml is not found within the resources folder
+     */
+    @FXML
+    private void doOpenChangePassword() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com/shr4pnel/atm/changepassword.fxml"));
+        Parent changePassword = loader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Change password");
+        ChangePasswordControls changePasswordControls = loader.getController();
+        changePasswordControls.setPrimaryController(this);
+        Scene scene = new Scene(changePassword);
+        stage.setScene(scene);
+        controlsLogger.trace("changePassword: Showing change password window");
+        stage.show();
+    }
+
 
     /**
      * Parses the number pressed, and appends it to the primary display
@@ -320,7 +350,7 @@ public class Controls {
     public void handleButtonPress(ActionEvent event) {
         MFXButton source = (MFXButton) event.getSource();
         String id = source.getId();
-        Log.trace("Controls::handleButtonPress: KEYPRESS: " + id);
+        controlsLogger.trace("handleButtonPress: KEYPRESS: {}", id);
         switch (id) {
             case "backspace":
                 backspace();

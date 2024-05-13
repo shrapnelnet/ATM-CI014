@@ -10,6 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Bundles stylesheet, and loads FXML into stages to be rendered into a stage
@@ -18,6 +20,8 @@ import javafx.stage.Stage;
  * @since 1.0.0
  */
 public class Root extends Application {
+    /** Logger instance for Root.java */
+    private static final Logger rootLogger = LogManager.getLogger();
     /**
      * Takes stage injected by JavaFX and renders it.
      * MaterialFX bundles all necessary stylesheets
@@ -27,11 +31,8 @@ public class Root extends Application {
      */
     @Override
     public void start(Stage stage) throws FileNotFoundException {
-        Log.trace("Root::start: Initializing");
+        rootLogger.trace("start: Initializing");
         // https://github.com/palexdev/MaterialFX?tab=readme-ov-file#theming-system
-        // this builder is in charge of merging the default "modena" stylesheet
-        // with the materialfx root stylesheet
-        // it looks awful without this!
         UserAgentBuilder.builder()
             .themes(JavaFXThemes.MODENA)
             .themes(MaterialFXStylesheets.forAssemble(false))
@@ -50,7 +51,7 @@ public class Root extends Application {
             stage.setScene(scene);
             stage.show();
         } catch (IOException err) {
-            Log.error("interface.fxml not found");
+            rootLogger.error("interface.fxml not found");
             throw new FileNotFoundException();
         }
     }

@@ -5,6 +5,8 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Controller for the login.fxml file.
@@ -13,6 +15,8 @@ import javafx.stage.Stage;
  * @since 1.0.0
  */
 public class LoginControls {
+    /** Logger instance for LoginControls.java */
+    private final Logger loginControlsLogger = LogManager.getLogger();
     /** Used to represent account state from database */
     Account account;
     /** An instance of the database */
@@ -42,11 +46,11 @@ public class LoginControls {
         }
         account = db.tryLogin(username, password);
         if (account == null) {
-            Log.warn("LoginControls::doLogin: No such account");
+            loginControlsLogger.warn("doLogin: No such account");
             loginFeedback.setText("No such account");
             return;
         }
-        Log.trace("Logged in");
+        loginControlsLogger.trace("Logged in");
         // https://stackoverflow.com/questions/10751271/accessing-fxml-controller-class
         // this is how i modify the main window from a seperate scene
         // null point exceptions galore if you don't set it before you show the scene!
@@ -54,7 +58,10 @@ public class LoginControls {
             rootController.display_secondary.setText("Logged in as " + username + "!");
             rootController.logout.setDisable(false);
             rootController.login.setDisable(true);
+            rootController.changePassword.setDisable(false);
             rootController.account = account;
+        } else {
+            loginControlsLogger.warn("doLogin: rootController is null");
         }
         Stage stage = (Stage) loginUsername.getScene().getWindow();
         stage.close();
